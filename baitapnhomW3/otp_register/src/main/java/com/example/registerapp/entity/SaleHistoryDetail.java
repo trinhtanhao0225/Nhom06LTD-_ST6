@@ -1,9 +1,5 @@
 package com.example.registerapp.entity;
 
-import java.time.LocalDate;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,18 +10,18 @@ import lombok.Data;
 
 @Entity
 @Data
-public class SaleHistory {
+public class SaleHistoryDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int totalSold;
-    private LocalDate saleDate;
+    private int quantitySold;
+    private int price;
+    @ManyToOne
+    @JoinColumn(name = "size_id", referencedColumnName = "id")
+    private Size size;
     
     @ManyToOne
-    @JoinColumn(name = "info_detail_id", referencedColumnName = "id")
-    private InfoDetail infoDetail;
+    @JoinColumn(name = "color_id", referencedColumnName = "id")
+    private Color color;
     
-    @ManyToOne
-    @JsonIgnore
-    private Depot depot;
 }
