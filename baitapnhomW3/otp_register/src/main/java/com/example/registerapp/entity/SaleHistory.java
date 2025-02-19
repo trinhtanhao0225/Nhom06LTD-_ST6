@@ -25,7 +25,4 @@ public class SaleHistory {
     @JoinColumn(name = "info_detail_id", referencedColumnName = "id")
     private InfoDetail infoDetail;
     
-    @ManyToOne
-    @JsonIgnore
-    private Depot depot;
 }

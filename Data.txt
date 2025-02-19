@@ -1,58 +1,51 @@
 USE register_db;
-INSERT INTO Color (name) VALUES ('Red');
-INSERT INTO Color (name) VALUES ('Blue');
-INSERT INTO Color (name) VALUES ('Green');
-INSERT INTO Color (name) VALUES ('Yellow');
-INSERT INTO Color (name) VALUES ('Black');
 
-INSERT INTO Type (name) VALUES ('T-Shirt');
-INSERT INTO Type (name) VALUES ('Jeans');
-INSERT INTO Type (name) VALUES ('Jacket');
-INSERT INTO Type (name) VALUES ('Sweater');
-INSERT INTO Type (name) VALUES ('Shorts');
-INSERT INTO Type (name) VALUES ('Suit');
-INSERT INTO Type (name) VALUES ('Skirt');
+-- Thêm dữ liệu vào bảng Color
+INSERT INTO Color (name) VALUES ('Red'), ('Blue'), ('Green'), ('Yellow'), ('Black'), ('White'), ('Purple'), ('Orange'), ('Gray'), ('Brown');
 
-INSERT INTO Size (name, height, weight) VALUES ('S', 160, 50.0);
-INSERT INTO Size (name, height, weight) VALUES ('M', 170, 60.0);
-INSERT INTO Size (name, height, weight) VALUES ('L', 180, 70.0);
-INSERT INTO Size (name, height, weight) VALUES ('XL', 190, 80.0);
-INSERT INTO Size (name, height, weight) VALUES ('XXL', 200, 90.0);
+-- Thêm dữ liệu vào bảng Type
+INSERT INTO Type (name) VALUES ('T-Shirt'), ('Jeans'), ('Jacket'), ('Sweater'), ('Shorts'), ('Suit'), ('Skirt'), ('Hoodie'), ('Dress'), ('Coat');
 
-INSERT INTO User (name, email, password, active, otp, otp_generated_time) 
-VALUES ('John Doe', 'john.doe@example.com', 'password123', true, '123456', NOW());
-INSERT INTO User (name, email, password, active, otp, otp_generated_time) 
-VALUES ('Jane Smith', 'jane.smith@example.com', 'password456', false, '654321', NOW());
-INSERT INTO User (name, email, password, active, otp, otp_generated_time) 
-VALUES ('Alice Johnson', 'alice.johnson@example.com', 'password789', true, '789123', NOW());
+-- Thêm dữ liệu vào bảng Size
+INSERT INTO Size (name, height, weight) VALUES 
+('XS', 150, 45.0), ('S', 160, 50.0), ('M', 170, 60.0), ('L', 180, 70.0), 
+('XL', 190, 80.0), ('XXL', 200, 90.0), ('XXXL', 210, 100.0), ('4XL', 220, 110.0);
 
-INSERT INTO info_detail (email, phone, address) 
-VALUES ('john.doe@example.com', '1234567890', '123 Main Street, City');
-INSERT INTO info_detail (email, phone, address) 
-VALUES ('jane.smith@example.com', '0987654321', '456 Oak Avenue, Town');
-INSERT INTO info_detail (email, phone, address) 
-VALUES ('alice.johnson@example.com', '1122334455', '789 Pine Road, Village');
+-- Thêm dữ liệu vào bảng User
+INSERT INTO User (name, email, password, active, otp, otp_generated_time) VALUES 
+('John Doe', 'john.doe@example.com', 'password123', true, '123456', NOW()),
+('Jane Smith', 'jane.smith@example.com', 'password456', false, '654321', NOW()),
+('Alice Johnson', 'alice.johnson@example.com', 'password789', true, '789123', NOW()),
+('Bob Brown', 'bob.brown@example.com', 'password101', true, '456789', NOW()),
+('Charlie White', 'charlie.white@example.com', 'password102', false, '987654', NOW());
+
+-- Thêm dữ liệu vào bảng info_detail
+INSERT INTO info_detail (email, phone, address) VALUES 
+('john.doe@example.com', '1234567890', '123 Main Street, City'),
+('jane.smith@example.com', '0987654321', '456 Oak Avenue, Town'),
+('alice.johnson@example.com', '1122334455', '789 Pine Road, Village'),
+('bob.brown@example.com', '2233445566', '567 Birch Lane, Metro'),
+('charlie.white@example.com', '3344556677', '910 Maple Drive, Downtown');
 
 -- Thêm dữ liệu vào bảng Depot
-INSERT INTO Depot (name, image, description, type_id, size_id, color_id, price, quantity, discount, import_date)
-VALUES ('Red T-Shirt', 'red_tshirt.jpg', 'A stylish red t-shirt', 1, 1, 1, 19.99, 100, 10.0, '2025-02-17');
-INSERT INTO Depot (name, image, description, type_id, size_id, color_id, price, quantity, discount, import_date)
-VALUES ('Blue Jeans', 'blue_jeans.jpg', 'Comfortable blue jeans', 2, 2, 2, 39.99, 50, 15.0, '2025-02-17');
-INSERT INTO Depot (name, image, description, type_id, size_id, color_id, price, quantity, discount, import_date)
-VALUES ('Black Jacket', 'black_jacket.jpg', 'A warm black jacket for winter', 3, 3, 3, 79.99, 30, 20.0, '2025-02-17');
+INSERT INTO Depot (name, image, description, type_id, size_id, color_id, price, quantity, discount, import_date) VALUES 
+('Red T-Shirt', 'red_tshirt.jpg', 'A stylish red t-shirt', 1, 2, 1, 19.99, 100, 10.0, '2025-02-17'),
+('Blue Jeans', 'blue_jeans.jpg', 'Comfortable blue jeans', 2, 3, 2, 39.99, 50, 15.0, '2025-02-17'),
+('Black Jacket', 'black_jacket.jpg', 'A warm black jacket for winter', 3, 4, 3, 79.99, 30, 20.0, '2025-02-17'),
+('Green Hoodie', 'green_hoodie.jpg', 'Casual green hoodie', 8, 2, 3, 49.99, 40, 5.0, '2025-02-18'),
+('Yellow Dress', 'yellow_dress.jpg', 'Elegant yellow dress', 9, 3, 4, 59.99, 25, 12.0, '2025-02-18');
 
-INSERT INTO sale_history (total_sold, sale_date, info_detail_id, depot_id)
-VALUES (50, '2025-02-17', 1, 1);
-INSERT INTO sale_history (total_sold, sale_date, info_detail_id, depot_id)
-VALUES (30, '2025-02-17', 2, 2);
-INSERT INTO sale_history (total_sold, sale_date, info_detail_id, depot_id)
-VALUES (20, '2025-02-17', 3, 3);
+-- Sửa lại sale_history với info_detail_id hợp lệ
+INSERT INTO sale_history (total_sold, sale_date, info_detail_id) VALUES
+(50, '2025-02-17', 1),
+(30, '2025-02-17', 2),
+(20, '2025-02-17', 3),
+(15, '2025-02-18', 4),
+(10, '2025-02-18', 5);
 
-INSERT INTO sale_history_detail (quantity_sold, price, size_id, color_id) 
-VALUES (10, 200, 1, 1);
-INSERT INTO sale_history_detail (quantity_sold, price, size_id, color_id) 
-VALUES (5, 250, 2, 2);
-INSERT INTO sale_history_detail (quantity_sold, price, size_id, color_id) 
-VALUES (20, 150, 3, 3);
-
-
+INSERT INTO sale_history_detail (sale_history_id, depot_id, quantity_sold, price, size_id, color_id) VALUES
+(21, 1, 10, 19.99, 2, 1),
+(22, 2, 15, 39.99, 3, 2),
+(23, 3, 5, 79.99, 4, 3),
+(24, 4, 7, 49.99, 2, 3),
+(25, 5, 12, 59.99, 3, 4);

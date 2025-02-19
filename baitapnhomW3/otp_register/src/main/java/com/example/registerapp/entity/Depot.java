@@ -46,9 +46,6 @@ public class Depot {
     private int quantity;
     private double discount;
     private LocalDate importDate;
-    
-    @OneToMany(mappedBy = "depot")
-    @ToString.Exclude
-    private List<SaleHistory> saleHistories;
+
 
 }
