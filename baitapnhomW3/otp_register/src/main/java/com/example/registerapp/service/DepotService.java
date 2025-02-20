@@ -30,4 +30,7 @@ public class DepotService {
 
         return recentProducts;
     }
+    public List<Depot> getAllDepotsByTypeName(String typeName) {
+        return depotRepository.findAllDepotsByTypeName(typeName);
+    }
 }

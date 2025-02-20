@@ -20,4 +20,7 @@ public interface DepotRepository extends JpaRepository<Depot, Integer> {
 
     @Query("SELECT d FROM Depot d WHERE d.importDate >= :DaysAgo ORDER BY d.importDate DESC")
     List<Depot> findTopByRecentCreation(@Param("DaysAgo") LocalDate DaysAgo, Pageable pageable);
+    
+    @Query("SELECT t.depots FROM Type t WHERE t.name = :typeName")
+    List<Depot> findAllDepotsByTypeName(@Param("typeName") String typeName);
 }

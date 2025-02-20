@@ -30,5 +30,9 @@ public class DepotController {
     public ResponseEntity<List<Depot>> getTopByRecentCreation(@RequestParam int day, @RequestParam int top) {
         return new ResponseEntity<>(depotService.findTopByRecentCreation(day, top), HttpStatus.OK);
     }
+    @GetMapping("/depots-by-name")
+    public List<Depot> getDepotsByTypeName(@RequestParam String typeName) {
+        return depotService.getAllDepotsByTypeName(typeName);
+    }
 }
 
